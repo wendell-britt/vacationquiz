@@ -2,7 +2,7 @@
   display: none;
 }
 
-h1, h2{
+h1, h2, h3{
   text-align: center;
 }
 
@@ -14,5 +14,9 @@ p {
 img {
   display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+}
+
+.button {
+  align-content: center;
 }
