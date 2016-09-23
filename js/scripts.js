@@ -6,11 +6,6 @@ var $darkplace = 0
 
 
 // var foodSelector = ($("input:radio[name=food]:checked").val());
-var foodSelector
-var climateSelector = ($("input:radio[name=climate]:checked").val());
-var funSelector = ($("input:radio[name=fun]:checked").val());
-var sleepSelector = ($("input:radio[name=sleep]:checked").val());
-var result
 
 $(document).ready(function() {
 
@@ -19,31 +14,72 @@ $("form#quiz").submit(function(event) {
 
 
 
-  function helper() {
-    if((foodSelector || climateSelector || funSelector || sleepSelector) === "mordor") {
+  function helperFood() {
+    if($("input:radio[name=food]:checked").val() === "mordor") {
       $mordor++;
-    } else if ((foodSelector || climateSelector || funSelector || sleepSelector) ==="spiderfarm") {
+    } else if ($("input:radio[name=food]:checked").val() === "spiderfarm") {
       $spiderfarm++;
-    } else if ((foodSelector || climateSelector || funSelector || sleepSelector) ==="hell") {
+    } else if ($("input:radio[name=food]:checked").val() === "hell") {
       $hell++;
-    } else if ((foodSelector || climateSelector || funSelector || sleepSelector) ==="darkplace") {
+    } else if ($("input:radio[name=food]:checked").val() === "darkplace") {
+      $darkplace++;
+    }
+  }
+  function helperClimate() {
+    if($("input:radio[name=climate]:checked").val() === "mordor") {
+      $mordor++;
+    } else if ($("input:radio[name=climate]:checked").val() === "spiderfarm") {
+      $spiderfarm++;
+    } else if ($("input:radio[name=climate]:checked").val() === "hell") {
+      $hell++;
+    } else if ($("input:radio[name=climate]:checked").val() === "darkplace") {
       $darkplace++;
     }
   }
 
+  function helperSleep() {
+    if($("input:radio[name=sleep]:checked").val() === "mordor") {
+      $mordor++;
+    } else if ($("input:radio[name=sleep]:checked").val() === "spiderfarm") {
+      $spiderfarm++;
+    } else if ($("input:radio[name=sleep]:checked").val() === "hell") {
+      $hell++;
+    } else if ($("input:radio[name=sleep]:checked").val() === "darkplace") {
+      $darkplace++;
+    }
+  }
+  function helperFun() {
+    if($("input:radio[name=fun]:checked").val() === "mordor") {
+      $mordor++;
+    } else if ($("input:radio[name=fun]:checked").val() === "spiderfarm") {
+      $spiderfarm++;
+    } else if ($("input:radio[name=fun]:checked").val() === "hell") {
+      $hell++;
+    } else if ($("input:radio[name=fun]:checked").val() === "darkplace") {
+      $darkplace++;
+    }
+  }
   function results() {
-    // helper();
+    helperFood();
+    helperClimate();
+    helperSleep();
+    helperFun();
+
     if ($mordor > ($spiderfarm && $hell && $darkplace)) {
       $("#mordor").show();
+      $("form#quiz").hide();
     }
     else if ($spiderfarm > ($mordor && $hell && darkplace)) {
       $("#spiderfarm").show();
+      $("form#quiz").hide();
     }
     else if ($darkplace > ($mordor && $hell && $spiderfarm)) {
       $("#darkplace").show();
+      $("form#quiz").hide();
     }
     else if ($hell > ($mordor && $darkplace && $spiderfarm)) {
       $("#hell").show();
+      $("form#quiz").hide();
     }
 
   }
@@ -51,6 +87,6 @@ $("form#quiz").submit(function(event) {
     //   $("#mordor").show();
     //
     // }
-results();
+    results();
     })
   });
